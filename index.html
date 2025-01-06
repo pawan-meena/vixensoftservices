@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Mode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4a90e2, #9013fe);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .countdown div {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .countdown div span {
+            display: block;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: move 10s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) scale(0.8);
+            }
+            50% {
+                transform: translateY(50vh) scale(1.2);
+            }
+            100% {
+                transform: translateY(-10vh) scale(0.8);
+            }
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="circle" style="width: 150px; height: 150px; top: 10%; left: 20%;"></div>
+        <div class="circle" style="width: 200px; height: 200px; top: 50%; left: 70%;"></div>
+        <div class="circle" style="width: 100px; height: 100px; top: 80%; left: 30%;"></div>
+    </div>
+
+    <div class="container">
+        <h1>We're Under Maintenance</h1>
+        <p>Our site is currently undergoing scheduled maintenance. We'll be back soon. Thank you for your patience!</p>
+        <div class="countdown">
+            <div>
+                <span id="days">00</span>
+                Days
+            </div>
+            <div>
+                <span id="hours">00</span>
+                Hours
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                Minutes
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                Seconds
+            </div>
+        </div>
+        <div class="footer">
+            &copy; 2025 VixenSoftServices Pvt Ltd | Contact: <a href="mailto:info@vixensoftservices.com" style="color: #fff; text-decoration: underline;">info@vixensoftservices.com</a>
+        </div>
+    </div>
+
+    <script>
+        // Set maintenance end date (YYYY-MM-DD HH:MM:SS format)
+        const maintenanceEndDate = new Date('2025-01-10 10:00:00').getTime();
+
+        console.log('Maintenance end date set to:', maintenanceEndDate);
+
+        const countdown = () => {
+            const now = new Date().getTime();
+            console.log('Current time:', now);
+
+            const timeLeft = maintenanceEndDate - now;
+            console.log('Time left:', timeLeft);
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                console.log(`Days: ${days}, Hours: ${hours}, Minutes: ${minutes}, Seconds: ${seconds}`);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                console.log('Maintenance has ended. Countdown will not update further.');
+            }
+        };
+
+        setInterval(() => {
+            console.log('Updating countdown...');
+            countdown();
+        }, 1000);
+    </script>
+</body>
+</html>
