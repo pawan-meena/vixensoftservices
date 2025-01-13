@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: #001015;
+    --foreground: 240 10% 3.9%;
+    --pink: #c1acf6;
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+body {
+  /* font-family: 'Barlow', sans-serif; */
+  font-family: "Bai Jamjuree", sans-serif;
+}
+
+body {
+  top: 0px !important;
+}
+
+.border-0:focus-visible {
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.customRadio input[type="radio"] + label span:hover,
+.customRadio input[type="radio"] + label:hover span {
+  transform: scale(1);
+}
+
+.customRadio input[type="radio"]:checked + label span {
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 2px white inset;
+}
+
+.termCheck {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 60px;
+}
+
+.termCheck input {
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  border: 2px solid #f7f7f7ad;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  height: 17px;
+  width: 17px;
+  -webkit-appearance: none;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"]:hover {
+  opacity: 1;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #f7f7f7;
+  opacity: 1;
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+input[type="checkbox"]:checked:before {
+  border-color: #000;
+}
+
+@layer components {
+  .modal {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #3b82f6, #3b82f6);
+  background-clip: text;
+}
+.gradient-text-banner {
+  background: linear-gradient(to right, #ec4899 30%, #3b82f6 60%);
+  background-clip: text;
+}
+.gradient-text-banner-2 {
+  background: linear-gradient(to right, #ec4899 40%, #3b82f6 60%);
+  background-clip: text;
+}
