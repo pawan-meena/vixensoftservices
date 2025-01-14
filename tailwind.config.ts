@@ -15,6 +15,16 @@ const config: Config = {
         xl: "1280px",
         xxl: "1440px",
       },
+      keyframes: {
+        float: {
+          "0%": { transform: "translateY(0) scale(0.8)" },
+          "50%": { transform: "translateY(50vh) scale(1.2)" },
+          "100%": { transform: "translateY(-10vh) scale(0.8)" },
+        },
+      },
+      animation: {
+        float: "float 10s linear infinite",
+      },
       lineHeight: {
         "12": "60px",
         "11": "52px",

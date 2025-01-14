@@ -64,7 +64,26 @@ body {
   align-items: flex-start;
   margin-top: 60px;
 }
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
+.gradient-text-banner {
+  background: linear-gradient(to right, #ec4899 30%, #3b82f6 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-banner-2 {
+  background: linear-gradient(to right, #ec4899 40%, #3b82f6 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .termCheck input {
   margin-top: 2px;
   width: 20px;
