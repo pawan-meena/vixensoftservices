@@ -1,77 +1,90 @@
-import type { Config } from "tailwindcss";
-import type { PluginAPI } from "tailwindcss/types/config";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: ['class'],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
-      screens: {
-        sm_xl: "1200px",
-        xl: "1280px",
-        xxl: "1440px",
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
+        },
       },
       keyframes: {
-        float: {
-          "0%": { transform: "translateY(0) scale(0.8)" },
-          "50%": { transform: "translateY(50vh) scale(1.2)" },
-          "100%": { transform: "translateY(-10vh) scale(0.8)" },
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
         },
       },
       animation: {
-        float: "float 10s linear infinite",
-      },
-      lineHeight: {
-        "12": "60px",
-        "11": "52px",
-      },
-      skew: {
-        "-30": "-30deg",
-      },
-      fontFamily: {
-        barlow: ["Barlow", "sans-serif"],
-        commissioner: ["Commissioner", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
-        "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
-      },
-      colors: {
-        customLightPink: "#c1acf6",
-        customPurple: "#5b0292",
-        customLightBlue: "#30d8ff",
-        customWhite: "#FFFFFFBA",
-        customPink: "#DF1FDD",
-        customPink2: "#A32CC4",
-        customPinkPurple: "#C243FE",
-        customGray: "#4b4b4b",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      rotate: {
-        "15": "15deg",
-        "30": "30deg",
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
-  plugins: [
-    function ({ addUtilities }: PluginAPI) {
-      const newUtilities = {
-        ".scrollbar-hide": {
-          "scrollbar-width": "none" /* Firefox */,
-          "-ms-overflow-style": "none" /* Internet Explorer 10+ */,
-          "&::-webkit-scrollbar": {
-            display: "none" /* Safari and Chrome */,
-          },
-        },
-      };
-      addUtilities(newUtilities);
-    },
-  ],
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
