@@ -80,3 +80,15 @@
     @apply bg-background text-foreground;
   }
 }
+.gradient-text {
+  background: linear-gradient(to right, #ec4899, #3b82f6, #3b82f6);
+  background-clip: text;
+}
+.gradient-text-banner {
+  background: linear-gradient(to right, #ec4899 30%, #3b82f6 60%);
+  background-clip: text;
+}
+.gradient-text-banner-2 {
+  background: linear-gradient(to right, #ec4899 40%, #3b82f6 60%);
+  background-clip: text;
+}
