@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -69,7 +69,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
                     <p className="text-sm text-muted-foreground">
-                      123 Tech Street, Silicon Valley, CA 94025
+                     Jaipur India
                     </p>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
                     <p className="text-sm text-muted-foreground">
-                      contact@vixensoftservices.com
+                      <a href="mailto:shubhdev71@gmail.com">shubhdev71@gmail.com</a>
                     </p>
                   </div>
                 </div>
@@ -93,7 +93,19 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Call Us</h3>
                     <p className="text-sm text-muted-foreground">
-                      +1 (555) 123-4567
+                    +91 84349 14802
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-start space-x-4">
+                  <Link className="h-6 w-6 text-primary mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Follow Us on LinkedIn</h3>
+                    <p className="text-sm text-muted-foreground">
+                      <a href="https://www.linkedin.com/company/vixensoftservices1" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
                     </p>
                   </div>
                 </div>
