@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./theme-toggle";
+import Image from 'next/image';
 
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Team", href: "#team" },
+  // { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -46,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Code2 className="h-8 w-8 text-primary" />
+            <Image src="/assets/logo.png" alt="Logo" width={64} height={64} />
             <span className="ml-2 text-xl font-bold">Vixensoftservices</span>
           </div>
           

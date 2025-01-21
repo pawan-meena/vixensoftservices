@@ -27,16 +27,16 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: '#FF6F61', // Example color from the logo
+          foreground: '#FFFFFF', // Text color on primary
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: '#FF6F61', // Example color from the logo
+          foreground: '#FFFFFF', // Text color on primary
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: '#6A5B8A', // Example color from the logo
+          foreground: '#FFFFFF', // Text color on secondary
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
