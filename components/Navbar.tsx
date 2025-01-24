@@ -47,8 +47,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Image src="/assets/logo.png" alt="Logo" width={64} height={64} />
-            <span className="ml-2 text-xl font-bold">Vixensoftservices</span>
+            <Image src="/assets/logo.png" alt="Logo" width={100} height={80} />
+            {/* <span className="ml-2 text-xl font-bold">Vixensoftservices</span> */}
           </div>
           
           <div className="hidden md:block">
