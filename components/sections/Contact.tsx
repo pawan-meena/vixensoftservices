@@ -69,7 +69,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
                     <p className="text-sm text-muted-foreground">
-                     Jaipur India
+                    C14, Rajeev gandhi nagar, khatipura, Jaipur, Rajasthan 302017
                     </p>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
                     <p className="text-sm text-muted-foreground">
-                      <a href="mailto:shubhdev71@gmail.com">shubhdev71@gmail.com</a>
+                      <a href="mailto:info@vixensoftservices.com">info@vixensoftservices.com</a>
                     </p>
                   </div>
                 </div>
