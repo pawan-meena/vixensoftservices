@@ -175,39 +175,6 @@ export default function About() {
 
   return (
     <section ref={sectionRef} className="py-20 relative overflow-hidden min-h-screen">
-      {/* Space/Night Sky Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
-        {/* Stars */}
-        {Array.from({ length: 100 }).map((_, i) => (
-          <div
-            key={i}
-            className="star absolute w-1 h-1 bg-white rounded-full opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-        
-        {/* Shooting Stars */}
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div
-            key={`shooting-${i}`}
-            className="shooting-star absolute w-1 h-1 bg-white rounded-full opacity-80"
-            style={{
-              left: `-10px`,
-              top: `${Math.random() * 50}%`,
-              transform: "rotate(45deg)",
-            }}
-          />
-        ))}
-
-        {/* Nebula effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "4s" }} />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">

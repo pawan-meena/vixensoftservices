@@ -60,7 +60,7 @@ export default function Hero() {
     const gridItems = grid.querySelectorAll("div");
     gridItems.forEach((item, index) => {
       gsap.to(item, {
-        y: -10,
+        x: 10,
         duration: 2 + index * 0.2,
         repeat: -1,
         yoyo: true,
@@ -74,7 +74,7 @@ export default function Hero() {
       item.addEventListener("mouseenter", () => {
         gsap.to(item, {
           scale: 1.05,
-          y: -5,
+          x: 5,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -83,7 +83,7 @@ export default function Hero() {
       item.addEventListener("mouseleave", () => {
         gsap.to(item, {
           scale: 1,
-          y: 0,
+          x: 0,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -104,31 +104,7 @@ export default function Hero() {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Floating animation for stars
-    const stars = hero.querySelectorAll(".star");
-    stars.forEach((star, index) => {
-      gsap.to(star, {
-        y: -20,
-        duration: 3 + index * 0.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: index * 0.2,
-      });
-    });
 
-    // Shooting stars animation
-    const shootingStars = hero.querySelectorAll(".shooting-star");
-    shootingStars.forEach((star, index) => {
-      gsap.to(star, {
-        x: "100vw",
-        y: "100vh",
-        duration: 2,
-        repeat: -1,
-        delay: index * 3,
-        ease: "power1.in",
-      });
-    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -136,40 +112,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <div ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Space/Night Sky Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
-        {/* Stars */}
-        {Array.from({ length: 100 }).map((_, i) => (
-          <div
-            key={i}
-            className="star absolute w-1 h-1 bg-white rounded-full opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
+    <div ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden pb-20">
 
-        {/* Shooting Stars */}
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div
-            key={`shooting-${i}`}
-            className="shooting-star absolute w-1 h-1 bg-white rounded-full opacity-80"
-            style={{
-              left: `-10px`,
-              top: `${Math.random() * 50}%`,
-              transform: "rotate(45deg)",
-            }}
-          />
-        ))}
-
-        {/* Nebula effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "4s" }} />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

@@ -123,68 +123,12 @@ export default function Footer() {
       );
     });
 
-    // Floating animation for stars
-    const stars = footer.querySelectorAll(".star");
-    stars.forEach((star, index) => {
-      gsap.to(star, {
-        y: -10,
-        duration: 4 + index * 0.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-        delay: index * 0.3,
-      });
-    });
 
-    // Shooting stars animation
-    const shootingStars = footer.querySelectorAll(".shooting-star");
-    shootingStars.forEach((star, index) => {
-      gsap.to(star, {
-        x: "100vw",
-        y: "100vh",
-        duration: 2,
-        repeat: -1,
-        delay: index * 3,
-        ease: "power1.in",
-      });
-    });
 
   }, []);
 
   return (
     <footer ref={footerRef} className="relative overflow-hidden border-t border-white/10">
-      {/* Space/Night Sky Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
-        {/* Stars */}
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="star absolute w-1 h-1 bg-white rounded-full opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-        
-        {/* Shooting Stars */}
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={`shooting-${i}`}
-            className="shooting-star absolute w-1 h-1 bg-white rounded-full opacity-80"
-            style={{
-              left: `-10px`,
-              top: `${Math.random() * 50}%`,
-              transform: "rotate(45deg)",
-            }}
-          />
-        ))}
-
-        {/* Nebula effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -216,10 +160,19 @@ export default function Footer() {
                 <div className="flex items-center space-x-3 group">
                   <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                   <a 
-                    href="tel:+918434914802" 
+                    href="tel:+918690888321" 
                     className="text-sm text-gray-300 hover:text-primary transition-colors duration-300"
                   >
-                    +91 84349 14802
+                    +91 8690888321
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3 group">
+                  <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <a 
+                    href="tel:+918690888322" 
+                    className="text-sm text-gray-300 hover:text-primary transition-colors duration-300"
+                  >
+                    +91 8690888322
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 group">
