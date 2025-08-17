@@ -3,105 +3,55 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
-import { ThemeToggle } from "./theme-toggle";
 import Image from 'next/image';
-import { gsap } from "gsap";
 
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Tech Stack", href: "#tech-stack" },
+  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
-  // { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navbarRef = useRef<HTMLElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const navItemsRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const navbar = navbarRef.current;
-    const logo = logoRef.current;
-    const navItems = navItemsRef.current;
+    if (!navbar) return;
 
-    if (!navbar || !logo || !navItems) return;
+    // Simple fade-in animation
+    navbar.style.opacity = '0';
+    navbar.style.transform = 'translateY(-20px)';
+    
+    const timer = setTimeout(() => {
+      navbar.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      navbar.style.opacity = '1';
+      navbar.style.transform = 'translateY(0)';
+    }, 100);
 
-    // Initial animation for logo and nav items
-    gsap.fromTo(logo,
-      { opacity: 0, x: -50 },
-      { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
-    );
-
-    gsap.fromTo(navItems,
-      { opacity: 0, x: 50 },
-      { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.2 }
-    );
-
-    // Animate nav items on scroll
+    // Handle scroll effect
     const handleScroll = () => {
       const scrolled = window.scrollY > 0;
       setIsScrolled(scrolled);
-
-      if (scrolled) {
-        gsap.to(navbar, {
-          backgroundColor: "rgba(15, 23, 42, 0.9)",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(navbar, {
-          backgroundColor: "transparent",
-          backdropFilter: "blur(0px)",
-          boxShadow: "none",
-          borderBottom: "none",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Mobile menu animation
-  useEffect(() => {
-    const mobileMenu = mobileMenuRef.current;
-    if (!mobileMenu) return;
-
-    if (isMobileMenuOpen) {
-      gsap.fromTo(mobileMenu,
-        { opacity: 0, y: -20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }
-      );
-    } else {
-      gsap.to(mobileMenu, {
-        opacity: 0,
-        y: -20,
-        scale: 0.95,
-        duration: 0.2,
-        ease: "power2.in",
-      });
-    }
-  }, [isMobileMenuOpen]);
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      const offset = 80; // Height of the fixed navbar
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -116,57 +66,50 @@ export default function Navbar() {
     <nav 
       ref={navbarRef} 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-white/10" : "bg-transparent"
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div ref={logoRef} className="flex items-center group cursor-pointer" onClick={() => scrollToSection("#home")}>
+          <div className="flex items-center group cursor-pointer" onClick={() => scrollToSection("#home")}>
             <div className="relative overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-300">
               <Image src="/assets/logo.png" alt="Logo" width={100} height={80} />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
           
-          <div ref={navItemsRef} className="hidden md:block">
+          <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <Button
                   key={item.href}
                   variant="ghost"
                   onClick={() => scrollToSection(item.href)}
-                  className="group relative overflow-hidden hover:bg-transparent text-white hover:text-primary"
+                  className="text-gray-700 hover:text-logo-pink hover:bg-logo-pink/5 transition-all duration-300"
                 >
-                  <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
-                    {item.label}
-                  </span>
-                  <div className="absolute inset-0 bg-primary/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                  {item.label}
                 </Button>
               ))}
               <Button
                 variant="default"
                 onClick={() => scrollToSection("#contact")}
-                className="group relative overflow-hidden bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                className="bg-gradient-to-r from-logo-pink via-logo-purple to-logo-blue hover:from-logo-pink/90 hover:via-logo-purple/90 hover:to-logo-blue/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <span className="relative z-10">Contact Us</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                Contact Us
               </Button>
-              {/* <ThemeToggle /> */}
             </div>
           </div>
           
           <div className="md:hidden flex items-center gap-2">
-            {/* <ThemeToggle /> */}
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="group text-white hover:bg-white/10"
+              className="text-gray-700 hover:bg-logo-pink/5 hover:text-logo-pink"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
+                <Menu className="h-6 w-6" />
               )}
             </Button>
           </div>
@@ -174,27 +117,24 @@ export default function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div ref={mobileMenuRef} className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-900/95 backdrop-blur-md border-t border-white/10">
-            {navItems.map((item, index) => (
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navItems.map((item) => (
               <Button
                 key={item.href}
                 variant="ghost"
-                className="w-full justify-start group hover:bg-primary/10 transition-all duration-300 text-white hover:text-primary"
+                className="w-full justify-start text-gray-700 hover:bg-logo-pink/5 hover:text-logo-pink transition-all duration-300"
                 onClick={() => scrollToSection(item.href)}
               >
-                <span className="group-hover:text-primary transition-colors duration-300 group-hover:translate-x-2 transition-transform duration-300">
-                  {item.label}
-                </span>
+                {item.label}
               </Button>
             ))}
             <Button
               variant="default"
-              className="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+              className="w-full bg-gradient-to-r from-logo-pink via-logo-purple to-logo-blue hover:from-logo-pink/90 hover:via-logo-purple/90 hover:to-logo-blue/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => scrollToSection("#contact")}
             >
-              <span className="relative z-10">Contact Us</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+              Contact Us
             </Button>
           </div>
         </div>

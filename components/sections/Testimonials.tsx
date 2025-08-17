@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const testimonials = [
   {
@@ -29,28 +29,45 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Simple fade-in animation
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    
+    const timer = setTimeout(() => {
+      section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section className="py-20 bg-background">
+    <section ref={sectionRef} className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-logo-pink via-logo-purple to-logo-blue bg-clip-text text-transparent">
             Client Testimonials
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it - hear what our clients have to say
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Don&apos;t just take our word for it - hear what our clients have to say
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              className="animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <Card className="p-6 h-full hover:shadow-lg transition-shadow">
+              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 border border-gray-200">
                 <div className="flex flex-col h-full">
                   <div className="flex items-center mb-4">
                     <img
@@ -59,8 +76,8 @@ export default function Testimonials() {
                       className="w-12 h-12 rounded-full object-cover"
                     />
                     <div className="ml-4">
-                      <h3 className="font-semibold">{testimonial.name}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">
                         {testimonial.role}
                       </p>
                     </div>
@@ -73,12 +90,12 @@ export default function Testimonials() {
                       />
                     ))}
                   </div>
-                  <p className="text-muted-foreground flex-grow">
+                  <p className="text-gray-600 flex-grow leading-relaxed">
                     {testimonial.content}
                   </p>
                 </div>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
