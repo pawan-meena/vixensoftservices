@@ -124,7 +124,12 @@
 
 /* Utility classes */
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out;
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.service-card.animate-fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .animate-slide-up {
