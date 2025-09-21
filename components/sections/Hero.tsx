@@ -433,9 +433,8 @@ export default function Hero() {
                               {item.technologies.length > 4 && (
                                 <motion.span 
                                   className="px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium border border-white/20"
-                                  whileHover={{ scale: 1.05, y: -2 }}
+                                  whileHover={{ scale: 1.05, y: -2, opacity: 1 }}
                                   initial={{ scale: 0.8, opacity: 0 }}
-                                  whileHover={{ scale: 1, opacity: 1 }}
                                   transition={{ duration: 0.2, delay: 0.4 }}
                                 >
                                   +{item.technologies.length - 4}
