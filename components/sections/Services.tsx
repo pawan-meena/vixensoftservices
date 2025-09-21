@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Code2, Smartphone, Tv, Server, Database, Laptop, Send, ArrowRight, Star, Users, Clock, CheckCircle } from "lucide-react";
+import { Code2, Smartphone, Tv, Server, Database, Laptop, Send, ArrowRight, Star, Users, Clock, CheckCircle, Bot, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
@@ -36,48 +36,56 @@ const services = [
     stats: { projects: "150+", rating: "4.9", clients: "120+" }
   },
   {
-    id: "app-development",
+    id: "mobile-tv-app-development",
     icon: Smartphone,
-    title: "App Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-    shortDescription: "Cross-platform mobile apps with native performance",
+    title: "Mobile & TV App Development",
+    description: "Comprehensive mobile and smart TV applications that deliver exceptional user experiences across all platforms.",
+    shortDescription: "Complete mobile and TV app solutions for maximum reach",
     color: "bg-gradient-to-br from-purple-50 to-purple-100/50",
     iconColor: "text-purple-600",
     gradientClass: "from-purple-500 to-purple-700",
-    techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase", "AWS", "Node.js", "MongoDB", "Redux", "TypeScript", "Jest", "Detox"],
+    techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Android TV SDK", "Firebase", "AWS", "Node.js", "MongoDB", "ExoPlayer", "Redux", "TypeScript", "Jetpack Compose"],
     features: [
-      "Cross-platform development",
-      "Native performance",
+      "Cross-platform mobile development",
+      "Android TV & Smart TV apps",
+      "Native performance optimization",
+      "TV-optimized UI/UX design",
+      "Remote control navigation",
       "Offline functionality",
       "Push notifications",
+      "4K video support",
       "App store optimization",
-      "Analytics integration"
+      "Multi-language support"
     ],
-    pricing: "Starting from $5,000",
-    timeline: "4-12 weeks",
-    stats: { projects: "80+", rating: "4.8", clients: "65+" }
+    pricing: "Starting from $6,000",
+    timeline: "4-16 weeks",
+    stats: { projects: "115+", rating: "4.9", clients: "93+" }
   },
   {
-    id: "android-tv-apps",
-    icon: Tv,
-    title: "Android TV Apps",
-    description: "Engaging smart TV applications optimized for the big screen experience.",
-    shortDescription: "Smart TV apps for the ultimate viewing experience",
-    color: "bg-gradient-to-br from-green-50 to-green-100/50",
-    iconColor: "text-green-600",
-    gradientClass: "from-green-500 to-green-700",
-    techStack: ["Kotlin", "Android TV SDK", "ExoPlayer", "Firebase", "Room Database", "Retrofit", "Dagger Hilt", "Jetpack Compose", "Coroutines"],
+    id: "ai-automation-workflow",
+    icon: Bot,
+    title: "AI Automation & Workflow",
+    description: "Custom AI-powered automation solutions and intelligent workflows designed to boost productivity and streamline business operations.",
+    shortDescription: "AI-driven automation for maximum productivity and efficiency",
+    color: "bg-gradient-to-br from-emerald-50 to-emerald-100/50",
+    iconColor: "text-emerald-600",
+    gradientClass: "from-emerald-500 to-emerald-700",
+    techStack: ["Python", "OpenAI API", "LangChain", "Azure AI", "AWS AI", "TensorFlow", "PyTorch", "RPA Tools", "Zapier", "Microsoft Power Automate", "Custom APIs", "Machine Learning"],
     features: [
-      "TV-optimized UI/UX",
-      "Remote control navigation",
-      "4K video support",
-      "Offline content",
-      "Multi-language support",
-      "Parental controls"
+      "Custom AI workflow automation",
+      "Intelligent document processing",
+      "Chatbot and virtual assistants",
+      "Data analysis and insights",
+      "Process optimization",
+      "Integration with existing systems",
+      "Real-time monitoring and alerts",
+      "Scalable AI solutions",
+      "Training and support",
+      "ROI measurement and reporting"
     ],
-    pricing: "Starting from $7,500",
-    timeline: "6-14 weeks",
-    stats: { projects: "35+", rating: "4.9", clients: "28+" }
+    pricing: "Starting from $4,500",
+    timeline: "3-10 weeks",
+    stats: { projects: "45+", rating: "4.9", clients: "38+" }
   },
   {
     id: "devops-services",
